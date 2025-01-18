@@ -1,0 +1,24 @@
+<div class="home-container">
+    <h1>Welcome to Our Home Page</h1>
+    <p>This is a simple home page for our Angular application.</p>
+    
+    <div>
+      <label for="fileInput">Choose a file for summary:</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+      <button (click)="onSubmit()">Submit</button>
+    </div>
+  
+    <!-- Modal -->
+    @if(showModal){
+        <div class="modal">
+            <div class="modal-content">
+              <h2>Select an option</h2>
+              <button (click)="selectOption('text-summary')">Text Summary</button>
+              <button (click)="selectOption('quiz')">Quiz</button>
+              <button (click)="selectOption('flashcards')">Flashcards</button>
+              <button (click)="startSummarizing()">Start Summarizing</button>
+            </div>
+        </div>
+    }
+    
+  </div>
