@@ -1,17 +1,35 @@
 .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    margin-top: 50px;
+    animation: fadeIn 2s ease-in-out;
   }
   
   .header {
     position: relative;
     text-align: left;
     padding: 20px;
-    height: 100vh; /* Set the height to cover the full viewport height */
+    width: 100%;
     background-image: url("../image/background1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    animation: slideIn 1.5s ease-in-out;
+  }
+  
+  .header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    filter: brightness(0.5); /* Optional: darken the background for better text visibility */
   }
   
   .header h1,
@@ -19,12 +37,57 @@
     position: relative;
     z-index: 1;
     color: white; /* Ensure text is visible on the background */
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .file-upload label {
+    font-size: 1.5rem; /* Increase the font size */
+    margin-bottom: 10px;
+  }
+  
+  .file-upload textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .file-upload input {
+    margin-bottom: 20px;
+    transition: opacity 0.5s ease;
+  }
+  
+  .file-upload input.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
   
   button {
-    margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    color: white;
   }
   
   .modal {
@@ -37,6 +100,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-in-out;
   }
   
   .modal-content {
@@ -44,4 +108,24 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
