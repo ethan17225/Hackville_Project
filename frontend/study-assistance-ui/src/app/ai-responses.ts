@@ -1,6 +1,10 @@
 export interface SummaryResponse {
   summary: string;
   key_concepts: KeyConcept[];
+  question?: string;
+  options?: string[];
+  correct_answer?: string;
+  answer?: string;
 }
 
 interface KeyConcept {
@@ -14,9 +18,16 @@ export interface QAResponse {
   question: string;
   options: string[];
   correct_answer: string;
+  summary?: string;
+  key_concepts?: KeyConcept[]
+  answer?: string;
 }
 
 export interface FlashcardResponse {
   question: string;
   answer: string;
+  summary?: string;
+  key_concepts?: KeyConcept[]
+  options?: string[];
+  correct_answer?: string;
 }
