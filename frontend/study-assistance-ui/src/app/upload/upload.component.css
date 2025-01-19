@@ -104,7 +104,7 @@ input[type="file"] {
   width: 30%;
   height: 150px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, width 0.2s, height 0.2s;
 }
 
 .function-button:hover {
@@ -130,6 +130,10 @@ input[type="file"] {
   border-color: #007bff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   opacity: 1;
+  width: 40%;
+  height: 200px;
+  padding: 40px;
+  transform: translateY(-10px);
 }
 
 .function-button:disabled {
@@ -170,6 +174,7 @@ input[type="file"] {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  margin-top: 20px;
 }
 
 .spinner {
@@ -188,6 +193,12 @@ input[type="file"] {
 
 .results-container {
   margin-top: 30px;
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.results-container.visible {
+  opacity: 1;
 }
 
 /* Summary Styles */

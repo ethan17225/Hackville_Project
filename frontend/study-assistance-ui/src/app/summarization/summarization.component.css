@@ -1,0 +1,54 @@
+.summary-container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.summary-title, .concepts-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.summary-text {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.concepts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.concept-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    border: 1px solid #ddd; /* Light border to separate concepts */
+}
+
+.concept-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.concept-explanation,
+.concept-example {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.concept-features-title,
+.concept-example-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.concept-features-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}

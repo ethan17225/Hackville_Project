@@ -129,6 +129,9 @@ export class UploadComponent {
         }
         
         this.isProcessing = false;
+        setTimeout(() => {
+          document.querySelector('.results-container')?.classList.add('visible');
+        }, 500);
       },
       error: (error) => {
         console.error('Processing error:', error);

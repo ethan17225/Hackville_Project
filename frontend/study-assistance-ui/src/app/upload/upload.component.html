@@ -65,12 +65,10 @@
   </button>
 </div>
 
-@if (isProcessing) {
-  <div class="processing-overlay">
-    <div class="spinner"></div>
-    <p>Processing your document...</p>
-  </div>
-}
+<div class="processing-overlay" *ngIf="isProcessing">
+  <div class="spinner"></div>
+  <p>Processing your document...</p>
+</div>
 
 <div class="results-container" *ngIf="processedResult">
   @if (selectedFunction == "summarize") {
