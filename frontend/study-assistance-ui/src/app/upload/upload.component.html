@@ -10,7 +10,7 @@
              #fileInput 
              (change)="onFileSelected($event)" 
              multiple 
-             accept=".pdf,.doc,.docx,.txt">
+             accept=".pdf,.docx">
       <button class="select-button" (click)="fileInput.click()">Select Files</button>
     </div>
   </div>
@@ -20,6 +20,12 @@
       @for (file of selectedFiles; track file.name) {
         <div class="file-item">
           <span>{{file.name}}</span>
+          @if (file.error) {
+            <div class="error-message">{{file.error}}</div>
+          }
+          @if (file.result) {
+            <div class="result-message">Processing complete!</div>
+          }
           <div class="progress-bar">
             <div class="progress" [style.width.%]="file.progress"></div>
           </div>
