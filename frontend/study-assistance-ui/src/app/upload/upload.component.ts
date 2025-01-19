@@ -27,6 +27,7 @@ export class UploadComponent {
   selectedFunction: ProcessingFunction | null = null;
   processedResult: any = null;
   keyConcepts: KeyConcept[] = [];
+  selectedOption: string | null = null;
 
   constructor(private fileProcessingService: FileProcessingService) {}
 
@@ -93,6 +94,9 @@ export class UploadComponent {
           file.result = result;
           console.log('Processing result:', result);
           this.isFileUploaded = true;
+          setTimeout(() => {
+            this.isFileUploaded = true;
+          }, 1000);
           this.isUploading = false;
         },
         error: (error) => {
@@ -131,5 +135,13 @@ export class UploadComponent {
         this.isProcessing = false;
       }
     });
+  }
+
+  selectOption(option: string): void {
+    this.selectedOption = option;
+  }
+
+  isOptionSelected(option: string): boolean {
+    return this.selectedOption === option;
   }
 }
