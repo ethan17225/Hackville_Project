@@ -23,12 +23,12 @@
           @if (file.error) {
             <div class="error-message">{{file.error}}</div>
           }
-          @if (file.result) {
-            <div class="result-message">Processing complete!</div>
-          }
           <div class="progress-bar">
             <div class="progress" [style.width.%]="file.progress"></div>
           </div>
+          @if (file.result) {
+            <div class="result-message">Processing complete!</div>
+          }
         </div>
       }
     </div>
