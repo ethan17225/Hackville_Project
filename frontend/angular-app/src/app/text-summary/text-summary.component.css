@@ -8,9 +8,14 @@
   }
   
   .summary-label {
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .summary-content {

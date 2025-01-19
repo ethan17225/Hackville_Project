@@ -1,1 +1,19 @@
-<p>flashcards works!</p>
+<div class="flashcards-container">
+    <div class="flashcards-title">
+      <h1>Flashcards</h1>
+    </div>
+    <div class="flashcard-content">
+      <button class="arrow-button" (click)="previousCard()">&#8592;</button>
+      <div class="flashcard" (click)="flipCard()">
+        <div class="flashcard-inner" [class.flipped]="isFlipped">
+          <div class="flashcard-front">
+            <p>{{ flashcards[currentCardIndex].question }}</p>
+          </div>
+          <div class="flashcard-back">
+            <p>{{ flashcards[currentCardIndex].answer }}</p>
+          </div>
+        </div>
+      </div>
+      <button class="arrow-button" (click)="nextCard()">&#8594;</button>
+    </div>
+  </div>
