@@ -18,18 +18,9 @@ async def process_file(request: Request):
     global file_content, file_name
     
     data = await request.json()
-    input_file_name = data.get("file_name")
-    file_type = data.get("file_type")
+    file_content = data.get("file_content")
     
-    match file_type:
-        case "application/pdf":
-            file_content = extract_text_from_pdf(input_file_name)
-            file_name = input_file_name
-        case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            file_content = extract_text_from_docx(input_file_name)
-            file_name = input_file_name
-        else:
-            raise HTTPException(status_code=400, detail="Unsupported file format. Please upload a PDF or DOCX file.")
+    return {"status": "OK"}
         
 @app.post("/process_text")
 async def process_text(request: Request):

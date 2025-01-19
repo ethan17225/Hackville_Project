@@ -12,13 +12,9 @@ export class FileProcessingService {
   constructor(private http: HttpClient) {}
 
   processFile(file: File): Observable<any> {
-    const fileType = file.name.toLowerCase().endsWith('.pdf') ? 'pdf' : 'docx';
-    
     return from(file.arrayBuffer()).pipe(
       map(buffer => {
         const payload = {
-          file_name: file.name,
-          file_type: fileType,
           file_content: this.arrayBufferToBase64(buffer)
         };
         return payload;
