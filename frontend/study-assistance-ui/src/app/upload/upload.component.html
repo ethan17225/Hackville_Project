@@ -39,4 +39,38 @@
           (click)="uploadFiles()">
     Upload Files
   </button>
+
+  @if (isFileUploaded && !isProcessing && !processedResult) {
+    <div class="function-selection">
+      <div class="function-card" (click)="processFunction('summarize')">
+        <i class="fas fa-file-alt"></i>
+        <h3>Summarize Document</h3>
+        <p>Get a concise summary and key concepts</p>
+      </div>
+      <div class="function-card" (click)="processFunction('quiz')">
+        <i class="fas fa-question-circle"></i>
+        <h3>Q&A Generation</h3>
+        <p>Generate interactive quiz questions</p>
+      </div>
+      <div class="function-card" (click)="processFunction('flashcards')">
+        <i class="fas fa-clone"></i>
+        <h3>Flashcards</h3>
+        <p>Create study flashcards</p>
+      </div>
+    </div>
+  }
+
+  @if (isProcessing) {
+    <div class="processing-overlay">
+      <div class="spinner"></div>
+      <p>Processing your document...</p>
+    </div>
+  }
+
+  @if (processedResult) {
+    <app-process-result
+      [result]="processedResult"
+      [type]="selectedFunction">
+    </app-process-result>
+  }
 </div>

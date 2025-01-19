@@ -1,35 +1,76 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+
+export type ProcessingFunction = 'summarize' | 'quiz' | 'flashcards';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileProcessingService {
-  private apiUrl = 'http://localhost:8000/process_file';
+  private apiUrl = 'http://127.0.0.1:8000';
 
   constructor(private http: HttpClient) {}
 
   processFile(file: File): Observable<any> {
-    return from(file.arrayBuffer()).pipe(
-      map(buffer => {
+    return new Observable(observer => {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const text = e.target?.result as string;
         const payload = {
-          file_content: this.arrayBufferToBase64(buffer)
+          file_name: file.name,
+          file_content: text
         };
-        return payload;
-      }),
-      switchMap(payload => this.http.post(this.apiUrl, payload))
-    );
+
+        this.http.post(`${this.apiUrl}/process_file`, payload)
+          .subscribe({
+            next: (response) => observer.next(response),
+            error: (error) => observer.error(error),
+            complete: () => observer.complete()
+          });
+      };
+
+      reader.onerror = (error) => observer.error(error);
+
+      // Read the file as text
+      if (file.name.toLowerCase().endsWith('.pdf')) {
+        // For PDF files, we'll need server-side processing
+        this.readFileAsBase64(file).then(base64Content => {
+          const payload = {
+            file_name: file.name,
+            file_type: 'pdf',
+            file_content: base64Content
+          };
+          this.http.post(`${this.apiUrl}/process_file`, payload)
+            .subscribe({
+              next: (response) => observer.next(response),
+              error: (error) => observer.error(error),
+              complete: () => observer.complete()
+            });
+        });
+      } else {
+        // For other text-based files
+        reader.readAsText(file);
+      }
+    });
   }
 
-  private arrayBufferToBase64(buffer: ArrayBuffer): string {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
+  private async readFileAsBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64Content = reader.result as string;
+        resolve(base64Content.split(',')[1]);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  processFunction(functionType: ProcessingFunction): Observable<any> {
+    return this.http.post(`${this.apiUrl}/process_text`, { 
+      function: functionType 
+    });
   }
 }

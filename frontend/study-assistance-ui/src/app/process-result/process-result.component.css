@@ -1,0 +1,93 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the option cards */
+.option-cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+/* Individual option card */
+.option-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Option card title */
+.option-card h3 {
+    margin: 0;
+    color: #333333;
+}
+
+/* Loading message */
+.loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: #666666;
+    margin-top: 20px;
+}
+
+/* Result display */
+.result-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Summarize document result */
+.summary-result {
+    font-size: 16px;
+    color: #333333;
+}
+
+/* Q&A result */
+.qa-result {
+    font-size: 16px;
+    color: #333333;
+}
+
+.qa-result .question {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.qa-result .options {
+    margin-left: 20px;
+}
+
+/* Flashcards result */
+.flashcards-result {
+    font-size: 16px;
+    color: #333333;
+}
+
+.flashcards-result .flashcard {
+    margin-top: 10px;
+}
+
+.flashcards-result .question {
+    font-weight: bold;
+}
+
+.flashcards-result .answer {
+    margin-left: 20px;
+}

@@ -1,21 +1,35 @@
-import requests, json
+import requests
+import json
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from utils.summarize_text import summarize_document
 from utils.generate_quiz import generate_quiz
 from utils.generate_flashcards import generate_flashcards
-from utils.extract_text import extract_text_from_pdf, extract_text_from_docx
 
 load_dotenv()
 
 app = FastAPI()
 
+# CORS Configuration
+origins = [
+    "http://localhost:4200",  # Angular frontend
+    "http://127.0.0.1:4200"  # Alternative localhost
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 file_content = ""
-file_name = ""
 
 @app.post("/process_file")
 async def process_file(request: Request):
-    global file_content, file_name
+    global file_content
     
     data = await request.json()
     file_content = data.get("file_content")
@@ -37,5 +51,14 @@ async def process_text(request: Request):
     
     return result
 
-app.run(port=8000)
+@app.post("/summarize_text")
+async def summarize_text(request: Request):
+    data = await request.json()
+    text = data.get("text")
+    result = summarize_document(text)
+    return result
 
+# Run app
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, port=8000)

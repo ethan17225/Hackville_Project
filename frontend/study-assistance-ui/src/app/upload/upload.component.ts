@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FileProcessingService } from '../services/file-processing.service';
+import { FileProcessingService, ProcessingFunction } from '../services/file-processing.service';
+import { ProcessResultComponent } from "../process-result/process-result.component";
 
 interface UploadFile extends File {
   progress?: number;
@@ -11,13 +12,17 @@ interface UploadFile extends File {
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProcessResultComponent],
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent {
   selectedFiles: UploadFile[] = [];
   isUploading = false;
+  isFileUploaded = false;
+  isProcessing = false;
+  selectedFunction: ProcessingFunction | null = null;
+  processedResult: any = null;
 
   constructor(private fileProcessingService: FileProcessingService) {}
 
@@ -83,6 +88,8 @@ export class UploadComponent {
           file.progress = 100;
           file.result = result;
           console.log('Processing result:', result);
+          this.isFileUploaded = true;
+          this.isUploading = false;
         },
         error: (error) => {
           file.error = 'Processing failed';
@@ -94,6 +101,22 @@ export class UploadComponent {
           this.isUploading = false;
         }
       });
+    });
+  }
+
+  processFunction(functionType: ProcessingFunction): void {
+    this.isProcessing = true;
+    this.selectedFunction = functionType;
+    
+    this.fileProcessingService.processFunction(functionType).subscribe({
+      next: (result) => {
+        this.processedResult = result;
+        this.isProcessing = false;
+      },
+      error: (error) => {
+        console.error('Processing error:', error);
+        this.isProcessing = false;
+      }
     });
   }
 }
