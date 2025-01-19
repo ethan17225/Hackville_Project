@@ -1,0 +1,59 @@
+#!/bin/bash
+# Update and upgrade the system
+sudo yum update -y
+sudo yum upgrade -y
+
+# Install Nginx
+sudo amazon-linux-extras enable nginx1
+sudo yum install nginx -y
+
+# Start and enable Nginx to start at boot
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+# Install Git
+sudo yum install git -y
+
+# Install Node.js and npm (Amazon Linux Extras provides nodejs16)
+sudo amazon-linux-extras enable nodejs16
+sudo yum install nodejs -y
+
+# Clone the GitHub repository
+cd /home/ec2-user
+git clone https://github.com/ethan17225/Hackville_Project.git
+cd Hackville_Project
+cd frontend
+cd study-assistance-ui
+
+# Install Angular CLI globally
+sudo npm install -g @angular/cli
+
+# Install project dependencies
+npm install
+
+# Build the Angular project for production
+ng build --configuration production
+
+# Deploy the built Angular app using Nginx
+sudo cp -r dist/* /usr/share/nginx/html/
+
+# Update Nginx configuration for Angular routing
+sudo tee /etc/nginx/nginx.conf > /dev/null <<EOF
+server {
+    listen 80;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files \$uri /index.html;
+    }
+}
+EOF
+
+# Restart Nginx to apply configuration
+sudo systemctl restart nginx
+
+# Add a success message to a log file
+echo "Angular app deployed successfully!" > /home/ec2-user/deployment-log.txt
