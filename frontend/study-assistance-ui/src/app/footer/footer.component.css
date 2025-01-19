@@ -1,72 +1,30 @@
 .footer {
   width: 100%;
-  height: 30px;
-  background: linear-gradient(90deg, var(--primary-lavender), var(--secondary-lavender));
+  padding: 0.75rem;
+  background: linear-gradient(90deg, var(--peach), var(--lavender));
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.footer-content {
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding: 0 3rem;
+.footer-nav {
+  display: flex;
+  gap: 2rem;
 }
 
-.footer-section h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-turquoise);
-}
-
-.footer-section h4 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-turquoise);
-}
-
-.footer-slogan {
-  color: var(--text-primary);
-  font-style: italic;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-}
-
-.footer-section ul li a {
-  color: #ecf0f1;
+.footer-link {
+  color: var(--text-secondary);
   text-decoration: none;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
-  color: var(--secondary-turquoise);
+.footer-link:hover {
+  color: var(--peach);
 }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-bottom p {
-  color: #bdc3c7;
-  font-size: 0.8rem;
-}
-
-.footer-text {
-  color: var(--white);
-  font-size: 0.8rem;
+.copyright {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
