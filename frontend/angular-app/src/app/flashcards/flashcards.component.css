@@ -1,34 +1,74 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .flashcards-container {
+    background:linear-gradient(to bottom, #4682B4, #778899, #B0E0E6);;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     height: 100vh;
+    animation: fadeIn 1s ease-in-out;
   }
   
   .flashcards-title {
     flex: 1;
     text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
   }
   
   .flashcards-title h1 {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 3.5rem;
+    color: #0c0c0c;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
   }
   
   .flashcard-content {
     flex: 2;
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
+    justify-content: center; /* Center content vertically */
+    align-self: center;
+    font-size: 32px; /* Make the label bigger */
+    padding: 10px 20px;
+    border: 2px solid #2c65a2; /* Add border to the label */
+    border-radius: 5px; /* Add border radius to the label */
+    background-color: #f8f9fa;
+    background-clip: padding-box; /* Ensure background doesn't overlap border */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Add shadow for gloss effect */
+    background-image: linear-gradient(#dee4ea, #d8dfe6), linear-gradient(to right, #538bc8, #51c0df); /* Gradient border */
+    background-origin: border-box;
+    animation: fadeIn 2s ease-in-out;
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
   }
   
   .flashcard {
-    width: 300px;
-    height: 200px;
+    width: 600px;
+    height: 400px;
     perspective: 1000px;
     cursor: pointer;
     margin: 20px 0;
+    transform-style: preserve-3d;
   }
   
   .flashcard-inner {
@@ -56,28 +96,31 @@
     position: absolute;
     top: 0;
     left: 0;
+    font-family: 'Roboto', sans-serif;
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
   }
   
   .flashcard-front {
-    background-color: #007bff; /* Blue background for front */
-    color: white;
+    background: linear-gradient(to bottom, #4682B4, #778899, #B0E0E6); /* Blue background for front */
+    color: rgb(16, 16, 16);
     transform: rotateY(0deg);
   }
   
   .flashcard-back {
-    background-color: #ffeb3b; /* Yellow background for back */
-    color: black;
+    background: linear-gradient(to bottom, #4682B4, #778899, #B0E0E6); /* Yellow background for back */
+    color: rgb(29, 28, 28);
     transform: rotateY(180deg);
   }
   
   .arrow-button {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
     transition: color 0.3s ease;
+    
   }
   
   .arrow-button:hover {
-    color: #007bff;
+    color: #4d739b;
   }
