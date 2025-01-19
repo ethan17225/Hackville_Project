@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+  --peach: #FFCBA4;
+  --peach-light: #FFE4D6;
+  --lavender: #E6E6FA;
+  --lavender-dark: #D1D1F6;
+  --turquoise: #AFEEEE;
+  --turquoise-dark: #95E3E3;
+  --neutral-light: #F8F9FA;
+  --neutral-dark: #6C757D;
+  --text-primary: #2D3436;
+  --text-secondary: #636E72;
+  --white: #ffffff;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-primary);
+  background-color: var(--neutral-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
