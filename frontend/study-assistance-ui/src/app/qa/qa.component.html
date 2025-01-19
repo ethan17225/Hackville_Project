@@ -1,17 +1,31 @@
 <div class="qa-view">
     @for (qa of QAs; track qa) {
-      <mat-card class="qa-card">
-        <mat-card-content>
-          <h3>Question {{++1}}</h3>
-          <p>{{qa.question}}</p>
-          <div class="options">
-            @for (option of qa.options; track option) {
-              <div [class.correct]="option === qa.correct_answer" class="option">
-                {{option}}
+      @if (qa) {
+        <div class="qa-card">
+          <mat-card>
+            <mat-card-content>
+              <h3>Question {{ QAs.indexOf(qa) + 1 }}</h3>
+              <p>{{ qa.question }}</p>
+              <div class="options">
+                @for (option of qa.options; track option) {
+                  <div 
+                    [class.correct]="option === qa.correct_answer && userAnswers[QAs.indexOf(qa)]"
+                    [class.wrong]="userAnswers[QAs.indexOf(qa)] && option === userAnswers[QAs.indexOf(qa)] && option !== qa.correct_answer"
+                    class="option"
+                    (click)="selectAnswer(QAs.indexOf(qa), option)">
+                    {{ option }}
+                  </div>
+                }
               </div>
-            }
-          </div>
-        </mat-card-content>
-      </mat-card>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      }
+    }
+    @if (showResults) {
+      <div class="results">
+        <h2 [style.color]="getResultMessage().color">{{ getResultMessage().message }}</h2>
+        <p>Your Score: {{ score }} / 10</p>
+      </div>
     }
 </div>

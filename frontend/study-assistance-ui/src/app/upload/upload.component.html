@@ -1,4 +1,4 @@
-<div class="upload-container">
+<div class="upload-container" [class.hidden]="isFileUploaded">
   <div class="upload-zone" 
        (dragover)="onDragOver($event)" 
        (dragleave)="onDragLeave($event)"
@@ -23,12 +23,12 @@
           @if (file.error) {
             <div class="error-message">{{file.error}}</div>
           }
-          @if (file.result) {
-            <div class="result-message">Processing complete!</div>
-          }
           <div class="progress-bar">
             <div class="progress" [style.width.%]="file.progress"></div>
           </div>
+          @if (file.result) {
+            <div class="result-message">Processing complete!</div>
+          }
         </div>
       }
     </div>
@@ -39,34 +39,38 @@
           (click)="uploadFiles()">
     Upload Files
   </button>
+</div>
 
-  @if (isFileUploaded && !isProcessing && !processedResult) {
-    <div class="function-selection">
-      <div class="function-card" (click)="processFunction('summarize')">
-        <i class="fas fa-file-alt"></i>
-        <h3>Summary Document</h3>
-        <p>Get a concise summary and key concepts</p>
-      </div>
-      <div class="function-card" (click)="processFunction('quiz')">
-        <i class="fas fa-question-circle"></i>
-        <h3>QA Generation</h3>
-        <p>Generate interactive quiz questions</p>
-      </div>
-      <div class="function-card" (click)="processFunction('flashcards')">
-        <i class="fas fa-clone"></i>
-        <h3>Flashcard</h3>
-        <p>Create study flashcards</p>
-      </div>
-    </div>
-  }
+<div class="function-selection" [class.visible]="isFileUploaded && !isProcessing">
+  <button class="function-button" 
+          [class.selected]="selectedFunction === 'summarize'"
+          (click)="processFunction('summarize')">
+    <i class="fas fa-file-alt"></i>
+    <h3>📄 Summary Document</h3>
+    <p>Get a concise summary and key concepts</p>
+  </button>
+  <button class="function-button" 
+          [class.selected]="selectedFunction === 'quiz'"
+          (click)="processFunction('quiz')">
+    <i class="fas fa-question-circle"></i>
+    <h3>❓ QA Generation</h3>
+    <p>Generate interactive quiz questions</p>
+  </button>
+  <button class="function-button" 
+          [class.selected]="selectedFunction === 'flashcards'"
+          (click)="processFunction('flashcards')">
+    <i class="fas fa-clone"></i>
+    <h3>🃏 Flashcard</h3>
+    <p>Create study flashcards</p>
+  </button>
+</div>
 
-  @if (isProcessing) {
-    <div class="processing-overlay">
-      <div class="spinner"></div>
-      <p>Processing your document...</p>
-    </div>
-  }
+<div class="processing-overlay" *ngIf="isProcessing">
+  <div class="spinner"></div>
+  <p>Processing your document...</p>
+</div>
 
+<div class="results-container" *ngIf="processedResult">
   @if (selectedFunction == "summarize") {
     <app-summarization [summary]="processedResult" 
                        [keyConcepts]="keyConcepts">

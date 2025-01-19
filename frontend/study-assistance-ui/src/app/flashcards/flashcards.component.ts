@@ -7,8 +7,28 @@ import { FlashcardResponse } from '../ai-responses';
   standalone: true,
   imports: [MatCardModule],
   templateUrl: './flashcards.component.html',
-  styleUrl: './flashcards.component.css'
+  styleUrls: ['./flashcards.component.css']
 })
 export class FlashcardsComponent {
-  @Input() flashcards: FlashcardResponse[] | null = null;
+  @Input() flashcards: FlashcardResponse[] = [];
+  currentIndex: number = 0;
+  showAnswer: boolean = false;
+
+  flipCard() {
+    this.showAnswer = !this.showAnswer;
+  }
+
+  nextCard() {
+    if (this.flashcards && this.currentIndex < this.flashcards.length - 1) {
+      this.currentIndex++;
+      this.showAnswer = false;
+    }
+  }
+
+  prevCard() {
+    if (this.flashcards && this.currentIndex > 0) {
+      this.currentIndex--;
+      this.showAnswer = false;
+    }
+  }
 }
