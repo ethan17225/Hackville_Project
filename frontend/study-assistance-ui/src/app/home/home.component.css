@@ -1,0 +1,44 @@
+.welcome-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.welcome-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.app-title {
+  font-size: 3.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.app-slogan {
+  font-size: 1.5rem;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+.get-started-btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: #2980b9;
+}
+
+.welcome-container {
+    height: 100vh;
+}
