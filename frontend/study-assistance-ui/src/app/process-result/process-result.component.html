@@ -1,1 +1,57 @@
+<div class="result-container" *ngIf="result">
+  <!-- Summary View -->
+  <div *ngIf="type === 'summarize'" class="summary-view">
+    <mat-card *ngFor="let item of result">
+      <mat-card-content>
+        <h2>Summary</h2>
+        <p>{{item.summary}}</p>
+        
+        <h2>Key Concepts</h2>
+        <div *ngFor="let concept of item.key_concepts" class="concept-card">
+          <h3>{{concept.concept}}</h3>
+          <p>{{concept.explanation}}</p>
+          <h4>Features:</h4>
+          <ul>
+            <li *ngFor="let feature of concept.features">{{feature}}</li>
+          </ul>
+          <h4>Example:</h4>
+          <p>{{concept.example}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Q&A View -->
+  <div *ngIf="type === 'qa'" class="qa-view">
+    <mat-card *ngFor="let qa of result; let i = index" class="qa-card">
+      <mat-card-content>
+        <h3>Question {{i + 1}}</h3>
+        <p>{{qa.question}}</p>
+        <div class="options">
+          <div *ngFor="let option of qa.options" 
+               [class.correct]="option === qa.correct_answer"
+               class="option">
+            {{option}}
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Flashcard View -->
+  <div *ngIf="type === 'flashcard'" class="flashcard-view">
+    <mat-card *ngFor="let card of result" class="flashcard">
+      <mat-card-content>
+        <div class="card-front">
+          <h3>Question:</h3>
+          <p>{{card.question}}</p>
+        </div>
+        <div class="card-back">
+          <h3>Answer:</h3>
+          <p>{{card.answer}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 

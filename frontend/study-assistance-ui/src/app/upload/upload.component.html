@@ -17,7 +17,7 @@
   
   @if (selectedFiles.length > 0) {
     <div class="file-list">
-      @for (file of selectedFiles; track file.name) {
+      @for (file of selectedFiles; track file) {
         <div class="file-item">
           <span>{{file.name}}</span>
           @if (file.error) {
@@ -44,17 +44,17 @@
     <div class="function-selection">
       <div class="function-card" (click)="processFunction('summarize')">
         <i class="fas fa-file-alt"></i>
-        <h3>Summarize Document</h3>
+        <h3>Summary Document</h3>
         <p>Get a concise summary and key concepts</p>
       </div>
       <div class="function-card" (click)="processFunction('quiz')">
         <i class="fas fa-question-circle"></i>
-        <h3>Q&A Generation</h3>
+        <h3>QA Generation</h3>
         <p>Generate interactive quiz questions</p>
       </div>
       <div class="function-card" (click)="processFunction('flashcards')">
         <i class="fas fa-clone"></i>
-        <h3>Flashcards</h3>
+        <h3>Flashcard</h3>
         <p>Create study flashcards</p>
       </div>
     </div>

@@ -51,6 +51,63 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.summary-view, .qa-view, .flashcard-view {
+    max-width: 800px;
+    width: 100%;
+}
+
+.concept-card {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.qa-card {
+    margin-bottom: 1rem;
+}
+
+.options {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.option {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.option.correct {
+    background: #e8f5e9;
+    border-color: #4caf50;
+}
+
+.flashcard {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.card-front, .card-back {
+    padding: 1rem;
+    background: #fff;
+}
+
+.flashcard:hover .card-back {
+    display: block;
+}
+
+.card-back {
+    display: none;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
 }
 
 /* Summarize document result */
