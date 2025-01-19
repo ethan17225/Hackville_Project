@@ -1,6 +1,13 @@
+body {
+    background: url(../image/background2.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 .text-summary-container {
     display: flex;
-    background: url(../image/background2.jpeg);
     background: cover;
     flex-direction: column;
     justify-content: center;
@@ -14,10 +21,11 @@
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: white;
-    background: linear-gradient(90deg, #285483, #2a8598);
+    background: linear-gradient(90deg, rgba(40, 84, 131, 0.8), rgba(42, 133, 152, 0.8));
     padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
   
   .summary-content {
@@ -25,11 +33,11 @@
     padding: 20px;
     border: 2px solid #ccc;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.611); /* Adjusted for transparency */
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   }
   
   .summary-content p {
     font-size: 1.2rem;
-    color: #555;
+    color: #020202;
   }
