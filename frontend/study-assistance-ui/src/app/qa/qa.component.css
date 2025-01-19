@@ -1,0 +1,57 @@
+.qa-view {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.qa-card {
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 400px;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.option.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.option.wrong {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.results {
+    margin-top: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px; /* Make the pop-up window bigger */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 80%; /* Adjust width for larger pop-up */
+    max-width: 600px; /* Set a maximum width */
+}

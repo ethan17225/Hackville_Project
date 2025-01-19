@@ -1,16 +1,19 @@
-<div class="flashcard-view">
-    @for (card of flashcards; track card) {
-      <mat-card class="flashcard">
-        <mat-card-content>
-          <div class="card-front">
-            <h3>Question:</h3>
-            <p>{{card.question}}</p>
-          </div>
-          <div class="card-back">
-            <h3>Answer:</h3>
-            <p>{{card.answer}}</p>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    }
+<div class="flashcards-container">
+  <div class="flashcards-title">
+    <h1>Flashcards</h1>
   </div>
+  <div class="flashcard-content">
+    <button class="arrow-button" (click)="prevCard()">&#8592;</button>
+    <div class="flashcard" (click)="flipCard()">
+      <div class="flashcard-inner" [class.flipped]="showAnswer">
+        <div class="flashcard-front">
+          <p>{{ flashcards[currentIndex].question }}</p>
+        </div>
+        <div class="flashcard-back">
+          <p>{{ flashcards[currentIndex].answer }}</p>
+        </div>
+      </div>
+    </div>
+    <button class="arrow-button" (click)="nextCard()">&#8594;</button>
+  </div>
+</div>
