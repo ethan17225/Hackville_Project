@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileProcessingService, ProcessingFunction } from '../services/file-processing.service';
-import { ProcessResultComponent } from "../process-result/process-result.component";
 import { KeyConcept } from '../ai-responses';
+import { SummarizationComponent } from "../summarization/summarization.component";
+import { QAComponent } from "../qa/qa.component";
+import { FlashcardsComponent } from "../flashcards/flashcards.component";
 
 interface UploadFile extends File {
   progress?: number;
@@ -13,7 +15,7 @@ interface UploadFile extends File {
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [CommonModule, ProcessResultComponent],
+  imports: [CommonModule, SummarizationComponent, QAComponent, FlashcardsComponent],
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProcessResultComponent } from './process-result.component';
+import { QAComponent } from './qa.component';
 
-describe('ProcessResultComponent', () => {
-  let component: ProcessResultComponent;
-  let fixture: ComponentFixture<ProcessResultComponent>;
+describe('QAComponent', () => {
+  let component: QAComponent;
+  let fixture: ComponentFixture<QAComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProcessResultComponent]
+      imports: [QAComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProcessResultComponent);
+    fixture = TestBed.createComponent(QAComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

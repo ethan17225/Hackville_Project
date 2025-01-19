@@ -1,0 +1,24 @@
+<div class="summary-view">
+    <mat-card>
+      <mat-card-content>
+        <h2>Summary</h2>
+        <p>{{summary}}</p>
+        
+        <h2>Key Concepts</h2>
+        @for (concept of keyConcepts; track concept) {
+          <div class="concept-card">
+            <h3>{{concept.concept}}</h3>
+            <p>{{concept.explanation}}</p>
+            <h4>Features:</h4>
+            <ul>
+              @for (feature of concept.features; track feature) {
+                <li>{{feature}}</li>
+              }
+            </ul>
+            <h4>Example:</h4>
+            <p>{{concept.example}}</p>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+</div>
