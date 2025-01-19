@@ -1,24 +1,35 @@
 <div class="home-container">
-    <!-- <div class="header">
-        <h1>Sum.XYZ</h1>
+    <div class="header">
+        <h1>StudySimplify</h1>
         <p>A method to help student aoemfqoifqomfqqwbq asqqwee</p>
-    </div> -->
+    </div>
     <div class="file-upload">
-      <label for="fileInput">Enter text or Choose Files</label>
+
+      <label for="fileInput">Add files</label>
       <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+
       <button (click)="onSubmit()">Submit</button>
     </div>
-  
+
     <!-- Modal -->
     @if(showModal){
         <div class="modal">
             <div class="modal-content">
-              <h2>Select an option</h2>
-              <button (click)="selectOption('text-summary')">Text Summary</button>
-              <button (click)="selectOption('quiz')">Quiz</button>
-              <button (click)="selectOption('flashcards')">Flashcards</button>
-              <button (click)="startSummarizing()">Start Summarizing</button>
+                <button (click)="startSummarizing()" class="start-button">Start Summarizing</button>
+                <div class="options">
+                  <div class="option-box" [class.selected]="selectedOption === 'text-summary'" (click)="selectOption('text-summary')">
+                    Text Summary
+                  </div>
+                  <div class="option-box" [class.selected]="selectedOption === 'quiz'" (click)="selectOption('quiz')">
+                    Quiz
+                  </div>
+                  <div class="option-box" [class.selected]="selectedOption === 'flashcards'" (click)="selectOption('flashcards')">
+                    Flashcards
+                  </div>
+                </div>
             </div>
         </div>
     }
+    
+    
   </div>

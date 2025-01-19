@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-text-summary',
-  imports: [],
   templateUrl: './text-summary.component.html',
-  styleUrl: './text-summary.component.css'
+  styleUrls: ['./text-summary.component.css']
 })
-export class TextSummaryComponent {
+export class TextSummaryComponent implements OnInit {
+  summary: string = 'This is the summary of the text.';
 
+  constructor() {}
+
+  ngOnInit(): void {}
 }

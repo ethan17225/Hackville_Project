@@ -39,4 +39,5 @@ export class HomeComponent {
       alert('Please select an option first.');
     }
   }
+ 
 }

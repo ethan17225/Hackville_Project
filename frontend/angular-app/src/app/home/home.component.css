@@ -1,40 +1,30 @@
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    animation: fadeIn 2s ease-in-out;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
-  .header {
-    position: relative;
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     text-align: left;
-    padding: 20px;
-    width: 100%;
     background-image: url("../image/background1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    animation: slideIn 1.5s ease-in-out;
-  }
-  
-  .header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    z-index: -1;
-    filter: brightness(0.5); /* Optional: darken the background for better text visibility */
+    animation: fadeIn 2s ease-in-out;
   }
   
   .header h1,
   .header p {
     position: relative;
+    margin: 30px;
     z-index: 1;
     color: white; /* Ensure text is visible on the background */
     animation: fadeIn 2s ease-in-out;
@@ -45,7 +35,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 300px; /* Adjust width as needed */
+    width: 500px; /* Adjust width as needed */
     margin: 0 auto;
     padding: 20px;
     border: 2px solid #ccc;
@@ -59,29 +49,19 @@
     margin-bottom: 10px;
   }
   
-  .file-upload textarea {
+  .file-upload input[type="text"] {
     width: 100%;
-    height: 100px;
     margin-bottom: 20px;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .file-upload input {
-    margin-bottom: 20px;
-    transition: opacity 0.5s ease;
-  }
-  
-  .file-upload input.hidden {
-    opacity: 0;
-    pointer-events: none;
+    border: 5px solid #ccc;
+    border-radius: 10px;
   }
   
   button {
     padding: 10px 20px;
     font-size: 16px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
   }
   
@@ -104,11 +84,70 @@
   }
   
   .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
+    background: url(../image/modal_img.png) no-repeat center center;
+    background-size: cover; /* Make the background image fit the modal */
+    padding: 40px;
+    border-radius: 10px;
     text-align: center;
+    width: 90%; /* Make the modal larger */
+    max-width: 1000px; /* Set a maximum width */
     animation: slideIn 0.5s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .start-button {
+    margin-bottom: 20px;
+    padding: 15px 30px; /* Increase padding for a larger button */
+    font-size: 18px; /* Increase font size */
+    background-color: #b59a53;/* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .start-button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .option-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Adjust height as needed */
+    text-align: center;
+    margin: 0 10px;
+    padding: 20px;
+    font-size: 1.5rem; /* Increase font size */
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-radius: 15px; /* Rounded corners */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+    color: #333; /* Text color */
+    font-family: 'Arial', sans-serif; /* Font family */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .option-box:hover {
+    transform: scale(1.1);
+    background-color: rgba(240, 240, 240, 0.9); /* Slightly darker background on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+  }
+  
+  .option-box.selected {
+    background-color: #5e96d2ea;
+    color: white;
+    border-color: #5e96d2ea;
   }
   
   /* Animations */
