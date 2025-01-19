@@ -62,7 +62,7 @@ def generate_quiz(text):
         res = json_parser.parse(res.content)
     except OutputParserException:
         raise OutputParserException("Context too big. Unable to parse jobs.")
-    return res if isinstance(res, list) else [res]
+    return {"quiz": res} if isinstance(res, list) else [res]
 
 if __name__ == "__main__":
     SAMPLE_TEXT = """

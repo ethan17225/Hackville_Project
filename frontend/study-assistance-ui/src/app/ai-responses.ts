@@ -7,7 +7,7 @@ export interface SummaryResponse {
   answer?: string;
 }
 
-interface KeyConcept {
+export interface KeyConcept {
   concept: string;
   explanation: string;
   features: string[];

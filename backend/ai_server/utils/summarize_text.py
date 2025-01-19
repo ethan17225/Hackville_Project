@@ -60,7 +60,7 @@ def summarize_document(text):
         res = json_parser.parse(res.content)
     except OutputParserException:
         raise OutputParserException("Context too big. Unable to parse jobs.")
-    return res if isinstance(res, list) else [res]
+    return {"summary": res["summary"], "key_concepts": res["key_concepts"]} if isinstance(res, dict) else [res] 
 
 if __name__ == "__main__":
     SAMPLE_TEXT = """

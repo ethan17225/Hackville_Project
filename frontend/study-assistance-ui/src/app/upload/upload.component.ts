@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileProcessingService, ProcessingFunction } from '../services/file-processing.service';
 import { ProcessResultComponent } from "../process-result/process-result.component";
+import { KeyConcept } from '../ai-responses';
 
 interface UploadFile extends File {
   progress?: number;
@@ -23,6 +24,7 @@ export class UploadComponent {
   isProcessing = false;
   selectedFunction: ProcessingFunction | null = null;
   processedResult: any = null;
+  keyConcepts: KeyConcept[] = [];
 
   constructor(private fileProcessingService: FileProcessingService) {}
 
@@ -110,7 +112,16 @@ export class UploadComponent {
     
     this.fileProcessingService.processFunction(functionType).subscribe({
       next: (result) => {
-        this.processedResult = result;
+
+        if (functionType === 'summarize') {
+          this.processedResult = result.summary;
+          this.keyConcepts = result.key_concepts;
+        } else if (functionType === 'quiz') {
+          this.processedResult = result.quiz;
+        } else if (functionType === 'flashcards') {
+          this.processedResult = result.flashcards;
+        }
+        
         this.isProcessing = false;
       },
       error: (error) => {
