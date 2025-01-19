@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #ffffff;
+  background-color: var(--white);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -22,7 +22,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: #2c3e50;
-  background: linear-gradient(45deg, #2c3e50, #16a085);
+  background: linear-gradient(45deg, var(--primary-lavender), var(--primary-turquoise));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -35,18 +35,18 @@
 
 .nav-link {
   text-decoration: none;
-  color: #2c3e50;
+  color: var(--text-primary);
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #16a085;
+  color: var(--primary-lavender);
 }
 
 .login-btn {
   padding: 0.5rem 1.5rem;
-  background-color: #16a085;
+  background-color: var(--primary-peach);
   color: white;
   border: none;
   border-radius: 4px;
@@ -55,5 +55,5 @@
 }
 
 .login-btn:hover {
-  background-color: #138a72;
+  background-color: var(--secondary-peach);
 }

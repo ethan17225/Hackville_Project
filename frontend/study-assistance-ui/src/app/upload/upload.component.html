@@ -1,0 +1,36 @@
+<div class="upload-container">
+  <div class="upload-zone" 
+       (dragover)="onDragOver($event)" 
+       (dragleave)="onDragLeave($event)"
+       (drop)="onDrop($event)">
+    <div class="upload-content">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Drag and drop files here or</p>
+      <input type="file" 
+             #fileInput 
+             (change)="onFileSelected($event)" 
+             multiple 
+             accept=".pdf,.doc,.docx,.txt">
+      <button class="select-button" (click)="fileInput.click()">Select Files</button>
+    </div>
+  </div>
+  
+  @if (selectedFiles.length > 0) {
+    <div class="file-list">
+      @for (file of selectedFiles; track file.name) {
+        <div class="file-item">
+          <span>{{file.name}}</span>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="file.progress"></div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+  
+  <button class="upload-button" 
+          [disabled]="!selectedFiles.length" 
+          (click)="uploadFiles()">
+    Upload Files
+  </button>
+</div>

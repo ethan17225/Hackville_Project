@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UploadComponent } from '../upload/upload.component';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, UploadComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  title = 'StudySimplify';
-  slogan = 'Where Every Concept Clicks—StudySimplify';
+  scrollToUpload() {
+    document.querySelector('.upload-section')?.scrollIntoView({ behavior: 'smooth' });
+  }
 }
