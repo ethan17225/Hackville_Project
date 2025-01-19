@@ -1,22 +1,24 @@
 .text-summary-container {
     display: flex;
+    background: url(../image/background2.jpeg);
+    background: cover;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
     text-align: center;
-  }
+}
   
   .summary-label {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: white;
-    background: linear-gradient(90deg, #007bff, #00d4ff);
+    background: linear-gradient(90deg, #285483, #2a8598);
     padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
   
   .summary-content {
     width: 80%;
@@ -24,7 +26,7 @@
     border: 2px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   }
   
   .summary-content p {

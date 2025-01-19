@@ -17,7 +17,10 @@
     transform: translateY(0);
   }
 }
-
+body {
+  overflow: hidden; /* Prevent scrolling */
+  height: 100vh; /* Ensure the body takes up the full height */
+}
 .flashcards-container {
     background:linear-gradient(to bottom, #4682B4, #778899, #B0E0E6);;
     display: flex;
@@ -59,7 +62,7 @@
     background-image: linear-gradient(#dee4ea, #d8dfe6), linear-gradient(to right, #538bc8, #51c0df); /* Gradient border */
     background-origin: border-box;
     animation: fadeIn 2s ease-in-out;
-    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+    transform: perspective(900px) rotateX(10deg) rotateY(10deg);
   }
   
   .flashcard {
@@ -68,7 +71,7 @@
     perspective: 1000px;
     cursor: pointer;
     margin: 20px 0;
-    transform-style: preserve-3d;
+    
   }
   
   .flashcard-inner {
@@ -97,7 +100,6 @@
     top: 0;
     left: 0;
     font-family: 'Roboto', sans-serif;
-    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
   }
   
   .flashcard-front {
