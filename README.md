@@ -52,7 +52,6 @@ This project was developed as part of Hackville 2025 under the theme **"Hack for
 ## 🔗 Links
 
 - **Demo Video**: [Watch on YouTube](https://youtu.be/ej0qigcsMEs)  
-- **Live App**: [Try StudySimplify](https://YourLiveAppLinkHere)  
 
 ## 🤝 Contribute
 
