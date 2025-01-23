@@ -1,8 +1,16 @@
 <body>
   <div class="text-summary-container">
-      <h1 class="summary-label">Text Summary</h1>
-      <div class="summary-content">
-        <p>{{ summary }}</p>
-      </div>
+    <h1 class="summary-label">Text Summary</h1>
+    <div class="summary-content">
+      <p>{{ summary }}</p>
+    </div>
+    <h2 class="concepts-label">Concepts</h2>
+    <div class="concepts-content">
+      <ng-container *ngFor="let concept of concepts">
+        <div class="concept-label">
+          <span>{{ concept }}</span>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </body>

@@ -41,3 +41,18 @@ body {
     font-size: 1.2rem;
     color: #020202;
   }
+
+.concept-label {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}

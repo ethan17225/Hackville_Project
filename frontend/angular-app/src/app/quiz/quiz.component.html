@@ -1,12 +1,16 @@
-<div class="quiz-container">
-  <h1 class="quiz-title">Quiz Section</h1>
-  <div class="question-box">
-    <p>{{ questions[currentQuestionIndex].question }}</p>
-  </div>
-  <div class="options-container">
-    <div class="option" *ngFor="let option of questions[currentQuestionIndex].options; let i = index" (click)="selectOption(option)">
-      {{ option }}
-    </div>
-  </div>
-  <button (click)="nextQuestion()">Next</button>
+<div>
+  <h2>Quiz</h2>
+  <form (ngSubmit)="checkAnswer()">
+    <label>
+      <input type="radio" name="quiz" value="option1" [(ngModel)]="selectedAnswer" /> Option 1
+    </label>
+    <label>
+      <input type="radio" name="quiz" value="option2" [(ngModel)]="selectedAnswer" /> Option 2
+    </label>
+    <label>
+      <input type="radio" name="quiz" value="option3" [(ngModel)]="selectedAnswer" /> Option 3
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+  <p>{{ result }}</p>
 </div>
